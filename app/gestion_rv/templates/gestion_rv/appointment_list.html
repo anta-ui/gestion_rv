@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Liste des Rendez-vous de  {{ user.username }}</h1>
+        <div class="appointment-list">
+            {% if appointments %}
+                {% for appointment in appointments %}
+                    <div class="appointment-item">
+                        <p> Vous avez un Rendez-vous le {{ appointment.date }} à {{ appointment.time }}</p>
+                        <a href="{% url 'appointment_detail' appointment.id %}" class="btn">Voir les détails</a>
+                        
+                        <a href="{% url 'modify_appointment' appointment.id %}" class="btn" >Modifier</a>
+                        <a href="{% url 'cancel_appointment' appointment.id %}" class="btn">Annuler</a> 
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucun rendez-vous trouvé.</p>
+            {% endif %}
+            <a href="{% url 'create_appointment' %}" class="btn">Ajouter </a> 
+        </div>
+    </div>
+{% endblock %}

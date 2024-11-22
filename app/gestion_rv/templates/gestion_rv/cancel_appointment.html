@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Confirmer l'annulation</h1>
+    <p>Êtes-vous sûr de vouloir annuler le rendez-vous suivant ?</p>
+    <p><strong>Date :</strong> {{ appointment.date }}</p>
+    <p><strong>Heure :</strong> {{ appointment.time }}</p>
+    <p><strong>Description :</strong> {{ appointment.description|default:"Pas de description" }}</p>
+    
+    <div class="btn-group">
+        <form method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Annuler le rendez-vous</button>
+        </form>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Retour</a>
+    </div>
+</div>
+
+{% endblock %}

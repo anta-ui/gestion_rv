@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gestion_rv',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR /'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,12 +79,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'db.sqlite3')),
-        "USER": os.environ.get("SQL_USER", "myuser"),
-        "PASSWORD": os.environ.get("SQL_PASSWORD", "myuserpassword"),
-        "HOST": os.environ.get("SQL_HOST", "localhost"),
-        "PORT": os.environ.get("SQL_PORT", "3306"),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dbgestion',
+        'USER': 'anta',
+        'PASSWORD': 'ubuntu',
+        'HOST': 'db',
+        'PORT': '3306',
     }
 }
 
@@ -127,3 +129,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/login/'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.5sursync.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'test@5sursync.com'
+EMAIL_HOST_PASSWORD = 'P@sser123'  # Il est préférable d'utiliser des variables d'environnement pour cela
+DEFAULT_FROM_EMAIL = 'test@5sursync.com'

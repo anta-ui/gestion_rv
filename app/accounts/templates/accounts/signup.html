@@ -1,0 +1,42 @@
+{% block content %}
+<div class="signup-container" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; color: #333; margin-bottom: 20px;">BIENVENUE</h1>   
+    <h2 style="text-align: center; color: #333; margin-bottom: 20px;">S'inscrire</h2>
+
+    <form method="POST" style="display: flex; flex-direction: column;">
+        {% csrf_token %}
+        
+        <!-- Champ Nom d'utilisateur -->
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="username" style="font-weight: bold;">Nom d'utilisateur</label>
+            <input id="username" type="text" name="username" placeholder="Choisissez un nom d'utilisateur"
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <!-- Champ Adresse Email -->
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="email" style="font-weight: bold;">Adresse Email</label>
+            <input id="email" type="email" name="email" placeholder="Entrez votre adresse email"
+                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+
+        <!-- Champ Mot de Passe -->
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="password" style="font-weight: bold;">Mot de Passe</label>
+            <input id="password" type="password" name="password" placeholder="Choisissez un mot de passe"
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <!-- Bouton Inscription -->
+        <button type="submit" style="background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer;">
+            S'inscrire
+        </button>
+    </form>
+
+    <!-- Lien vers la page de connexion -->
+    <div class="additional-options" style="text-align: center; margin-top: 20px;">
+        <p>Déjà un compte ? <a href="{% url 'login' %}" style="text-decoration: none; color: #007bff;">Se connecter</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% block content %}
+<div class="login-container" style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center; color: #333; margin-bottom: 20px;">BIENVENUE</h1> 
+    <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Connexion</h2>
+
+    <form method="POST" style="display: flex; flex-direction: column;">
+        {% csrf_token %}
+        
+        <!-- Champ Nom d'utilisateur -->
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="username" style="font-weight: bold;">Nom d'utilisateur</label>
+            <input id="username" type="text" name="username" placeholder="Entrez votre nom d'utilisateur" 
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                   required>
+        </div>
+
+        <!-- Champ Mot de Passe -->
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label for="password" style="font-weight: bold;">Mot de Passe</label>
+            <input id="password" type="password" name="password" placeholder="Entrez votre mot de passe" 
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                   required>
+        </div>
+
+        <!-- Bouton Connexion -->
+        <button type="submit" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+            Connexion
+        </button>
+    </form>
+</div>
+
+<!-- Lien vers la page d'inscription -->
+<div class="additional-options" style="text-align: center; margin-top: 20px;">
+    <p>Pas de compte ? <a href="{% url 'signup' %}" style="text-decoration: none; color: #007bff;">S'inscrire</a></p>
+</div>
+{% if messages %}
+    <div style="margin-bottom: 20px; color: red; text-align: center;">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}

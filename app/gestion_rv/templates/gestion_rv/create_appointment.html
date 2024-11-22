@@ -1,0 +1,35 @@
+{% block content %}
+<div class="form-container" style="max-width: 500px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+    <h1 style="text-align: center; color: #333;">Creer votre Rendez-vous</h1>
+    <form method="POST" action="{% url 'create_appointment' %}"  style="margin-top: 20px;" >
+        {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+        <!-- Champ pour la date du rendez-vous -->
+        <p>
+            <label for="id_date">Date:</label>
+            <input type="date" name="date" required id>
+        </p>
+        <!-- Champ pour l'heure du rendez-vous -->
+        <p>
+            <label for="id_time">Time:</label>
+            <input type="time" name="time" required id>
+        </p>
+        <!-- Champ pour la description du rendez-vous -->
+        <p>
+            <label for="id_description">Description:</label>
+            <input type="text" name="description" maxlength="255" required >
+        </p>
+   
+    <!-- Bouton de soumission -->
+    <button type="submit">Creer le Rendez-vous</button>
+    </form>
+
+</div>
+{% if messages %}
+    <div style="margin-bottom: 20px; color: red; text-align: center;">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

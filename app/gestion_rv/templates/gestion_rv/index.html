@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h1 style="text-align: center; color: #333;">Bienvenue, {{ user.username }} !!!</h1>
+    
+    
+    
+    {% if appointments %}
+        <ul style="list-style-type: none; padding: 0; max-width: 600px; margin: 20px auto;">
+            <h2 style="text-align: center; color: #555;">
+            <a href="{% url 'appointment_list' %}" class="btn">Cliquez ici pour voir la liste de vos rendez-vous</a>
+            <a href="{% url 'create_appointment' %}" class="btn">Ajouter un autre Rendez-vous</a> 
+            </h2>
+        </ul>
+    {% else %}
+        <p style="text-align: center; color: #555;">Vous n'avez aucun rendez-vous pour le moment.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{% url 'create_appointment' %}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+                Créer un Rendez-vous
+            </a>
+        </div>
+        
+    {% endif %}
+    
+    <h2 style="text-align: center; color: #555;"><a href="{% url 'logout' %}">Deconnexion</a></h2>
+
+{% endif %}
+
+{% endblock %}

@@ -11,10 +11,10 @@ services:
     env_file:
       - ./.env.dev
     environment:
-      - MYSQL_ROOT_PASSWORD=${SQL_ROOT_PASSWORD}
-      - MYSQL_USER=${SQL_USER}
-      - MYSQL_PASSWORD=${SQL_PASSWORD}
-      - MYSQL_DATABASE=${SQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=ubuntu
+      - MYSQL_USER=anta
+      - MYSQL_PASSWORD=ubuntu
+      - MYSQL_DATABASE=dbgestion
     ports:
       - 3306:3306
 

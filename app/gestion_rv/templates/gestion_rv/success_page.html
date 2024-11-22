@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Votre rendez-vous a été créé avec succès !</h1>
+    <p>Nous vous remercions de votre prise de rendez-vous.</p>
+    <a href="{% url 'index' %} "class="btn">Retour à l'accueil</a> <!-- Remplacez 'index' par l'URL de votre page d'accueil -->
+</div>
+{% endblock %}
